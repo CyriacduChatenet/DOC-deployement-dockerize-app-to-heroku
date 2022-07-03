@@ -15,8 +15,65 @@ How to deploy dockerize app to heroku ?
 - heroku.yml
 - Procfile
 ```
+## Docker Config files
+- client Dockerfile
+```bash
+FROM node:16.15
 
-## Config files
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["npm", "start"]
+```
+
+- server Dockerfile
+```bash
+FROM node:16.15
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 4000
+
+CMD ["npm", "start"]
+```
+
+- docker-compose.yml
+```bash
+version: "3"
+services:
+  api:
+    image: api_server
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    ports: 
+      - 4000:4000
+    networks: 
+      - mern-stack-net
+  client:
+    image: react_app
+    build:
+      context: ./client
+      dockerfile: ./Dockerfile
+    ports:
+      - 3000:3000
+    networks: 
+      - mern-stack-net
+networks:
+  mern-stack-net:
+    driver: bridge
+```
+
+## Heroku Config files
 ! You need to have Dockerfile at root path of your app.
 
 ### 1. at root of your project create file name "heroku.yml" and copy :
