@@ -2,7 +2,7 @@
 How to deploy dockerize app to heroku ?
 
 ## Example project structure
-
+```bash
 - client
 |-- build
 |-- src
@@ -13,6 +13,7 @@ How to deploy dockerize app to heroku ?
 - docker-compose.yml
 - heroku.yml
 - Procfile
+```
 
 ## Config files
 ! You need to have Dockerfile at root path of your app.
