@@ -1,4 +1,5 @@
 # deployement-dockerize-app-to-heroku
+<img src="https://miro.medium.com/max/1838/0*3xwm0Jdbyn7geaMK.png" alt="docker heroku">
 How to deploy dockerize app to heroku ?
 
 ## Example project structure
