@@ -129,5 +129,15 @@ git commit -m "message"
 git push heroku master
 ```
 
+- deploy docker containers on heroku
+```bash
+heroku container:push web 
+```
+
+- release docker containers on heroku
+```bash
+heroku container:release web
+```
+
 ### Docs 
 - [Heroku docker doc](https://devcenter.heroku.com/articles/build-docker-images-heroku-yml)
