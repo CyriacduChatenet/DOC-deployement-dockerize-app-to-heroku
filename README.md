@@ -18,17 +18,21 @@ How to deploy dockerize app to heroku ?
 ## Docker Config files
 - client Dockerfile
 ```bash
-FROM node:16.15
+FROM node:16.15 AS build-stage
 
-COPY package*.json ./
+WORKDIR /app
+
+COPY package*.json /app/
 
 RUN npm install
 
 COPY . .
 
-EXPOSE 3000
+RUN npm run build
 
-CMD ["npm", "start"]
+FROM nginx:alpine
+
+COPY --from=build-stage /app/build/ /usr/share/nginx/html
 ```
 
 - server Dockerfile
